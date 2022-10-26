@@ -1,6 +1,11 @@
 import React from 'react'
 
-export default function TodoItem({ todoItem, todoList, setTodoList }) {
+export default function TodoItem({
+  todoItem,
+  todoList,
+  setTodoList,
+  setIsOpen
+}) {
   const onDelete = () => {
     const newTodoList = todoList.filter(item => item.id !== todoItem.id)
     setTodoList(newTodoList)
@@ -28,6 +33,8 @@ export default function TodoItem({ todoItem, todoList, setTodoList }) {
   }
 
   const onEdit = () => {
+    setIsOpen(true)
+
     // get the item to be be changed
     const targetItem = todoList.find(item => item.id === todoItem.id)
 

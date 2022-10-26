@@ -13,12 +13,18 @@ export default function TodoForm({ setTodoList }) {
     }
     setTodoList(prev => [...prev, newTodo])
   }
+  const onClearAll = () => {
+    setTodoList([])
+  }
 
   return (
-    <form onSubmit={onAddTodo}>
-      <label htmlFor="todo-input">Add todo: </label>
-      <input type="text" id="todo-input" ref={todoInputRef} />
-      <button>Add</button>
-    </form>
+    <>
+      <form onSubmit={onAddTodo}>
+        <label htmlFor="todo-input">Add todo: </label>
+        <input type="text" id="todo-input" ref={todoInputRef} />
+        <button>Add</button>
+      </form>
+      <button onClick={onClearAll}>Clear All</button>
+    </>
   )
 }
