@@ -45,7 +45,13 @@ export default function EditToDoModal({
   return (
     <div className={`edit-form-container ${isOpen ? '' : 'hide'}`}>
       <form className="edit-form">
-        <p>Edit to do</p>
+        <div className="d-flex justify-content-between">
+          <p>Edit to do</p>
+          <span onClick={onCancel} className="material-symbols-outlined close">
+            close
+          </span>
+        </div>
+
         <Form.Control
           type="text"
           value={toEditTodoItem.text}
