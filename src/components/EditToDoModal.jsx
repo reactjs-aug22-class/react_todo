@@ -43,7 +43,10 @@ export default function EditToDoModal({
   }
 
   return (
-    <div className={`edit-form-container ${isOpen ? '' : 'hide'}`}>
+    <div
+      onClick={onCancel}
+      className={`edit-form-container ${isOpen ? '' : 'hide'}`}
+    >
       <form className="edit-form">
         <div className="d-flex justify-content-between">
           <p>Edit to do</p>

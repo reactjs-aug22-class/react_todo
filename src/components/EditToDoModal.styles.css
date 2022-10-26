@@ -10,7 +10,7 @@
   align-items: flex-start;
   padding-top: 4rem;
 
-  background-color: rgba(184, 184, 184, 0.267);
+  background-color: rgba(184, 184, 184, 0.786);
 
   z-index: 1;
 }
@@ -18,8 +18,8 @@
 .edit-form {
   background-color: white;
   padding: 1rem;
-  border: 1.5px solid rgb(102, 160, 230);
-  border-radius: 8px;
+  border: 1.5px solid rgb(49, 81, 121);
+  border-radius: 3px;
 }
 
 .hide {
