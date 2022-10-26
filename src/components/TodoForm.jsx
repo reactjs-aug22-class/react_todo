@@ -1,5 +1,7 @@
 import React, { useRef } from 'react'
 
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 import { v4 as uuidv4 } from 'uuid'
 
 export default function TodoForm({ setTodoList }) {
@@ -18,13 +20,29 @@ export default function TodoForm({ setTodoList }) {
   }
 
   return (
-    <>
-      <form onSubmit={onAddTodo}>
-        <label htmlFor="todo-input">Add todo: </label>
-        <input type="text" id="todo-input" ref={todoInputRef} />
-        <button>Add</button>
-      </form>
-      <button onClick={onClearAll}>Clear All</button>
-    </>
+    <div className="mb-3 ">
+      <h5 className="text-center">Add To Do</h5>
+      <Form onSubmit={onAddTodo} className="d-flex mb-3">
+        <Form.Group>
+          {/* <Form.Label
+            htmlFor="todo-input"
+            aria-label="todo text"
+            className="h-0"
+          ></Form.Label> */}
+          <Form.Control type="text" id="todo-input" ref={todoInputRef} />
+        </Form.Group>
+        <button className="btn btn-outline-primary px-2 d-flex align-items-center">
+          <span>Add</span>
+          <span class="material-symbols-outlined">add_box</span>
+        </button>
+      </Form>
+      <button
+        className="btn btn-outline-danger px-2 d-flex align-items-center"
+        onClick={onClearAll}
+      >
+        <span className="lead">Clear All</span>
+        <span className="material-symbols-outlined">delete_sweep</span>
+      </button>
+    </div>
   )
 }

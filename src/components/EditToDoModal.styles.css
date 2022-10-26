@@ -11,12 +11,14 @@
   padding-top: 4rem;
 
   background-color: rgba(201, 212, 215, 0.267);
+
+  z-index: 1;
 }
 
 .edit-form {
   background-color: white;
   padding: 1rem;
-  border: 2px solid rgb(65, 22, 17);
+  border: 1.5px solid rgb(65, 22, 17);
   border-radius: 8px;
 }
 

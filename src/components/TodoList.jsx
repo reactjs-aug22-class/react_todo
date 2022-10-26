@@ -6,20 +6,18 @@ export default function TodoList({
   todoList,
   setTodoList,
   setIsOpen,
-  setModalInputText,
-  setEditModalCallee
+  setToEditTodoItem
 }) {
   return (
-    <ul>
+    <ul className="list-group">
       {todoList.map((todoItem, index) => (
-        <li key={index}>
+        <li className="list-group-item" key={index}>
           <TodoItem
             todoItem={todoItem}
             todoList={todoList}
             setTodoList={setTodoList}
             setIsOpen={setIsOpen}
-            setModalInputText={setModalInputText}
-            setEditModalCallee={setEditModalCallee}
+            setToEditTodoItem={setToEditTodoItem}
           />
         </li>
       ))}

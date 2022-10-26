@@ -1,16 +1,15 @@
 import './EditTodoModal.styles.css'
 
+import Form from 'react-bootstrap/Form'
 import React from 'react'
 
 export default function EditToDoModal({
   isOpen,
   setIsOpen,
-  modalInputText,
-  setModalInputText,
   todoList,
   setTodoList,
-  editModalCallee,
-  setEditModalCallee
+  toEditTodoItem,
+  setToEditTodoItem
 }) {
   const onCancel = e => {
     e.preventDefault()
@@ -21,11 +20,11 @@ export default function EditToDoModal({
     e.preventDefault()
 
     // get the item to be be changed
-    const targetItem = todoList.find(item => item.id === editModalCallee)
+    const targetItem = todoList.find(item => item.id === toEditTodoItem.id)
 
     // get the index of tha item
     const targetItemIndex = todoList.findIndex(
-      item => item.id === editModalCallee
+      item => item.id === toEditTodoItem.id
     )
 
     // make copy of the todo item, unsafe to change the original ref
@@ -33,29 +32,39 @@ export default function EditToDoModal({
 
     // make copy of the todoList, unsafe to change the original ref
     const todoListCopy = [...todoList]
-
     // toggle the isComplete
-    targetItemCopy.text = modalInputText
+    targetItemCopy.text = toEditTodoItem.text
 
     todoListCopy[targetItemIndex] = targetItemCopy
 
     setTodoList(todoListCopy)
-    setEditModalCallee(undefined)
+    setToEditTodoItem({})
     setIsOpen(false)
   }
 
   return (
     <div className={`edit-form-container ${isOpen ? '' : 'hide'}`}>
       <form className="edit-form">
-        <h6>Edit to do</h6>
-        <input
-          value={modalInputText}
+        <p>Edit to do</p>
+        <Form.Control
+          type="text"
+          value={toEditTodoItem.text}
           onChange={e => {
-            setModalInputText(e.target.value)
+            setToEditTodoItem({ ...toEditTodoItem, text: e.target.value })
           }}
         />
-        <button onClick={onSave}>Save</button>
-        <button onClick={onCancel}>Cancel</button>
+
+        <div className="mt-2 d-flex justify-content-end">
+          <button className="btn text-success m-0 p-0" onClick={onSave}>
+            <span className="material-symbols-outlined">save</span>{' '}
+          </button>
+          <button
+            className="btn text-danger btn-sm  m-0 p-0"
+            onClick={onCancel}
+          >
+            <span className="material-symbols-outlined">backspace</span>
+          </button>
+        </div>
       </form>
     </div>
   )

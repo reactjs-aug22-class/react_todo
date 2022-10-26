@@ -1,3 +1,7 @@
+import './TodoItem.styles.css'
+
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 import React from 'react'
 
 export default function TodoItem({
@@ -5,8 +9,7 @@ export default function TodoItem({
   todoList,
   setTodoList,
   setIsOpen,
-  setModalInputText,
-  setEditModalCallee
+  setToEditTodoItem
 }) {
   const onDelete = () => {
     const newTodoList = todoList.filter(item => item.id !== todoItem.id)
@@ -36,27 +39,37 @@ export default function TodoItem({
 
   const onEdit = () => {
     setIsOpen(true)
-    setModalInputText(todoItem.text)
-    setEditModalCallee(todoItem.id)
+    setToEditTodoItem({ ...todoItem })
   }
 
   return (
-    <>
-      <input
-        type="checkbox"
-        aria-label="complete todo"
-        checked={todoItem.isComplete}
-        onChange={onCompleteTodo}
-      />
-      <span
-        style={{
-          textDecoration: todoItem.isComplete ? 'line-through' : 'none'
-        }}
-      >
-        {todoItem.text}
-      </span>
-      <button onClick={onDelete}>del</button>
-      <button onClick={onEdit}>edit</button>
-    </>
+    <div className="d-flex flex-gap-2 align-items-center justify-content-between">
+      <div className="d-flex align-items-center">
+        <Form.Check
+          type="checkbox"
+          className="me-1"
+          aria-label="complete todo"
+          checked={todoItem.isComplete}
+          onChange={onCompleteTodo}
+        />
+        <span
+          className="lead"
+          style={{
+            textDecoration: todoItem.isComplete ? 'line-through' : 'none'
+          }}
+        >
+          {todoItem.text}
+        </span>
+      </div>
+
+      <div>
+        <button className="btn text-danger m-0 p-0" onClick={onDelete}>
+          <span className="material-symbols-outlined">delete_forever</span>
+        </button>
+        <button className="btn text-secondary btn-sm  m-0 p-0" onClick={onEdit}>
+          <span className="material-symbols-outlined">edit</span>
+        </button>
+      </div>
+    </div>
   )
 }
