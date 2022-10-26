@@ -1,8 +1,13 @@
-import './EditToDoModel.styles.css'
+import './EditTodoModal.styles.css'
 
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function EditToDoModal({ isOpen, setIsOpen }) {
+export default function EditToDoModal({
+  isOpen,
+  setIsOpen,
+  modalInputText,
+  setModalInputText
+}) {
   const onCancel = e => {
     e.preventDefault()
     setIsOpen(false)
@@ -11,7 +16,7 @@ export default function EditToDoModal({ isOpen, setIsOpen }) {
     <div className={`edit-form-container ${isOpen ? '' : 'hide'}`}>
       <form className="edit-form">
         <h6>Edit to do</h6>
-        <input />
+        <input value={modalInputText} />
         <button>Ok</button>
         <button onClick={onCancel}>Cancel</button>
       </form>

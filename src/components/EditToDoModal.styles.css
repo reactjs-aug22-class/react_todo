@@ -10,15 +10,14 @@
   align-items: flex-start;
   padding-top: 4rem;
 
-  background-color: rgba(216, 240, 248, 0.267);
+  background-color: rgba(201, 212, 215, 0.267);
 }
 
 .edit-form {
   background-color: white;
   padding: 1rem;
-  border: 2px solid salmon;
+  border: 2px solid rgb(65, 22, 17);
   border-radius: 8px;
-  box-shadow: 5px 3px 2px rgba(250, 128, 114, 0.339);
 }
 
 .hide {

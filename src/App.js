@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState } from 'react'
 
-import EditToDo from './components/EditToDoModal'
+import EditTodoModal from './components/EditTodoModal'
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
 
@@ -9,15 +9,22 @@ function App() {
   // lifting up state
   const [todoList, setTodoList] = useState([])
   const [isOpen, setIsOpen] = useState(false)
+  const [modalInputText, setModalInputText] = useState('')
 
   return (
     <>
-      <EditToDoModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <EditTodoModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        modalInputText={modalInputText}
+        setModalInputText={setModalInputText}
+      />
       <TodoForm setTodoList={setTodoList} />
       <TodoList
         todoList={todoList}
         setTodoList={setTodoList}
         setIsOpen={setIsOpen}
+        setModalInputText={setModalInputText}
       />
     </>
   )

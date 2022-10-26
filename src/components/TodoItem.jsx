@@ -4,7 +4,8 @@ export default function TodoItem({
   todoItem,
   todoList,
   setTodoList,
-  setIsOpen
+  setIsOpen,
+  setModalInputText
 }) {
   const onDelete = () => {
     const newTodoList = todoList.filter(item => item.id !== todoItem.id)
@@ -34,6 +35,7 @@ export default function TodoItem({
 
   const onEdit = () => {
     setIsOpen(true)
+    setModalInputText(todoItem.text)
 
     // get the item to be be changed
     const targetItem = todoList.find(item => item.id === todoItem.id)
