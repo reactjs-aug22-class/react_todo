@@ -6,7 +6,8 @@ export default function TodoList({
   todoList,
   setTodoList,
   setIsOpen,
-  setModalInputText
+  setModalInputText,
+  setEditModalCallee
 }) {
   return (
     <ul>
@@ -18,6 +19,7 @@ export default function TodoList({
             setTodoList={setTodoList}
             setIsOpen={setIsOpen}
             setModalInputText={setModalInputText}
+            setEditModalCallee={setEditModalCallee}
           />
         </li>
       ))}

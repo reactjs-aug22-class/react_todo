@@ -5,7 +5,8 @@ export default function TodoItem({
   todoList,
   setTodoList,
   setIsOpen,
-  setModalInputText
+  setModalInputText,
+  setEditModalCallee
 }) {
   const onDelete = () => {
     const newTodoList = todoList.filter(item => item.id !== todoItem.id)
@@ -36,25 +37,7 @@ export default function TodoItem({
   const onEdit = () => {
     setIsOpen(true)
     setModalInputText(todoItem.text)
-
-    // get the item to be be changed
-    const targetItem = todoList.find(item => item.id === todoItem.id)
-
-    // get the index of tha item
-    const targetItemIndex = todoList.findIndex(item => item.id === todoItem.id)
-
-    // make copy of the todo item, unsafe to change the original ref
-    const targetItemCopy = { ...targetItem }
-
-    // make copy of the todoList, unsafe to change the original ref
-    const todoListCopy = [...todoList]
-
-    // toggle the isComplete
-    targetItemCopy.text = '' //???
-
-    todoListCopy[targetItemIndex] = targetItemCopy
-
-    setTodoList(todoListCopy)
+    setEditModalCallee(todoItem.id)
   }
 
   return (

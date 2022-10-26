@@ -10,6 +10,7 @@ function App() {
   const [todoList, setTodoList] = useState([])
   const [isOpen, setIsOpen] = useState(false)
   const [modalInputText, setModalInputText] = useState('')
+  const [editModalCallee, setEditModalCallee] = useState()
 
   return (
     <>
@@ -18,13 +19,19 @@ function App() {
         setIsOpen={setIsOpen}
         modalInputText={modalInputText}
         setModalInputText={setModalInputText}
+        todoList={todoList}
+        setTodoList={setTodoList}
+        editModalCallee={editModalCallee}
+        setEditModalCallee={setEditModalCallee}
       />
       <TodoForm setTodoList={setTodoList} />
       <TodoList
         todoList={todoList}
         setTodoList={setTodoList}
         setIsOpen={setIsOpen}
+        modalInputText={modalInputText}
         setModalInputText={setModalInputText}
+        setEditModalCallee={setEditModalCallee}
       />
     </>
   )
