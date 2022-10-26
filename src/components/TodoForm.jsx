@@ -14,6 +14,7 @@ export default function TodoForm({ setTodoList }) {
       isComplete: false
     }
     setTodoList(prev => [...prev, newTodo])
+    todoInputRef.current.value = ''
   }
   const onClearAll = () => {
     setTodoList([])
@@ -21,19 +22,12 @@ export default function TodoForm({ setTodoList }) {
 
   return (
     <div className="mb-3 ">
-      <h5 className="text-center">Add To Do</h5>
+      <h1 className="text-center">Add To Do</h1>
       <Form onSubmit={onAddTodo} className="d-flex mb-3">
-        <Form.Group>
-          {/* <Form.Label
-            htmlFor="todo-input"
-            aria-label="todo text"
-            className="h-0"
-          ></Form.Label> */}
-          <Form.Control type="text" id="todo-input" ref={todoInputRef} />
-        </Form.Group>
-        <button className="btn btn-outline-primary px-2 d-flex align-items-center">
+        <Form.Control type="text" id="todo-input" ref={todoInputRef} />
+        <button className="btn btn-outline-primary px-2 ms-3 d-flex align-items-center">
           <span>Add</span>
-          <span class="material-symbols-outlined">add_box</span>
+          <span className="material-symbols-outlined">add_box</span>
         </button>
       </Form>
       <button
