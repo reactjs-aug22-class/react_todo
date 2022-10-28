@@ -1,10 +1,9 @@
 import React, { useRef } from 'react'
 
-import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { v4 as uuidv4 } from 'uuid'
 
-export default function TodoForm({ setTodoList }) {
+export default function TodoForm({ setTodoList, setHasError }) {
   const todoInputRef = useRef()
   const onAddTodo = e => {
     e.preventDefault()
@@ -14,6 +13,7 @@ export default function TodoForm({ setTodoList }) {
       isComplete: false
     }
     setTodoList(prev => [...prev, newTodo])
+    setHasError(false)
     todoInputRef.current.value = ''
   }
   const onClearAll = () => {
