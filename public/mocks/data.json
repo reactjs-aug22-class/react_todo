@@ -1,0 +1,23 @@
+{
+	"data": [
+		{
+			"id": "5f67f9d6-1280-4b75-add2-30372df8f150",
+			"text": "Buy Milk",
+			"isComplete": false
+		},
+		{
+			"id": "b4e43b67-4279-4fdf-bad8-01fd0b6f67f0",
+			"text": "Clean the house",
+			"isComplete": false
+		},
+		{
+			"id": "1f0fb8f8-3a46-4b1d-ae22-ebc1ff1b639a",
+			"text": "Fill the car tank",
+			"isComplete": false
+		}
+	],
+	"status": 200,
+	"error": {
+		"message": ""
+	}
+}

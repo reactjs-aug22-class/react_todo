@@ -16,6 +16,26 @@ function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [toEditTodoItem, setToEditTodoItem] = useState({})
 
+  useEffect(() => {
+    const data = fetch('./mocks/data.json')
+      .then(response => response.json())
+      .then(dt => {
+        setTodoList(prevState => ({
+          ...prevState,
+          data: dt.data,
+          isLoading: false
+        }))
+      })
+      .catch(err => {
+        console.log(err)
+        setTodoList(prevState => ({
+          ...prevState,
+          data: [],
+          isLoading: false,
+          hasError: true
+        }))
+      })
+  }, [])
   return (
     <Container className="mt-4">
       <Row>
