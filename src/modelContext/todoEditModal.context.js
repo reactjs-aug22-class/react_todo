@@ -4,7 +4,13 @@ const modalState = {
   isOpen: false,
   setIsOpen: () => {},
   toEditTodoItem: {},
-  setToEditTodoItem: () => {}
+  setToEditTodoItem: () => {},
+  todoList: {
+    data: [],
+    isLoading: true,
+    hasError: false
+  },
+  setTodoList: () => {}
 }
 
 const ModalContext = createContext(modalState)

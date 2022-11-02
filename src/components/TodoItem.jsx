@@ -5,11 +5,12 @@ import React, { useContext } from 'react'
 import Form from 'react-bootstrap/Form'
 import ModalContext from '../modelContext/todoEditModal.context'
 
-export default function TodoItem({ todoItem, todoList, setTodoList }) {
-  const { setIsOpen, setToEditTodoItem } = useContext(ModalContext)
+export default function TodoItem({ todoItem }) {
+  const { setIsOpen, setToEditTodoItem, todoList, setTodoList } =
+    useContext(ModalContext)
 
   const onDelete = () => {
-    const newTodoList = todoList.filter(item => item.id !== todoItem.id)
+    const newTodoList = todoList.data.filter(item => item.id !== todoItem.id)
     setTodoList(prevState => ({
       ...prevState,
       data: newTodoList
@@ -18,16 +19,18 @@ export default function TodoItem({ todoItem, todoList, setTodoList }) {
 
   const onCompleteTodo = () => {
     // get the item to be be changed
-    const targetItem = todoList.find(item => item.id === todoItem.id)
+    const targetItem = todoList.data?.find(item => item.id === todoItem.id)
 
     // get the index of tha item
-    const targetItemIndex = todoList.findIndex(item => item.id === todoItem.id)
+    const targetItemIndex = todoList.data?.findIndex(
+      item => item.id === todoItem.id
+    )
 
     // make copy of the todo item, unsafe to change the original ref
     const targetItemCopy = { ...targetItem }
 
     // make copy of the todoList, unsafe to change the original ref
-    const todoListCopy = [...todoList]
+    const todoListCopy = [...todoList.data]
 
     // toggle the isComplete
     targetItemCopy.isComplete = !targetItemCopy.isComplete

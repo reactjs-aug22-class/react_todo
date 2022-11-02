@@ -5,10 +5,17 @@ import React, { useContext, useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import ModalContext from '../modelContext/todoEditModal.context'
 
-export default function EditToDoModal({ todoList, setTodoList }) {
+export default function EditToDoModal() {
   const [editInputValue, setEditInputValue] = useState('')
-  const { isOpen, setIsOpen, toEditTodoItem, setToEditTodoItem } =
-    useContext(ModalContext)
+  const {
+    isOpen,
+    setIsOpen,
+    toEditTodoItem,
+    setToEditTodoItem,
+    todoList,
+    setTodoList
+  } = useContext(ModalContext)
+
   useEffect(() => {
     if (toEditTodoItem.text) {
       setEditInputValue(toEditTodoItem.text)
@@ -24,10 +31,10 @@ export default function EditToDoModal({ todoList, setTodoList }) {
     e.preventDefault()
 
     // get the item to be be changed
-    const targetItem = todoList.find(item => item.id === toEditTodoItem.id)
+    const targetItem = todoList.data.find(item => item.id === toEditTodoItem.id)
 
     // get the index of tha item
-    const targetItemIndex = todoList.findIndex(
+    const targetItemIndex = todoList.data.findIndex(
       item => item.id === toEditTodoItem.id
     )
 
@@ -35,7 +42,7 @@ export default function EditToDoModal({ todoList, setTodoList }) {
     const targetItemCopy = { ...targetItem }
 
     // make copy of the todoList, unsafe to change the original ref
-    const todoListCopy = [...todoList]
+    const todoListCopy = [...todoList.data]
     // toggle the isComplete
     targetItemCopy.text = toEditTodoItem.text
 
