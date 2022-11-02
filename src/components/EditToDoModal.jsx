@@ -1,7 +1,8 @@
 import './EditToDoModal.styles.css'
 
+import React, { useEffect, useState } from 'react'
+
 import Form from 'react-bootstrap/Form'
-import React from 'react'
 
 export default function EditToDoModal({
   isOpen,
@@ -11,6 +12,14 @@ export default function EditToDoModal({
   toEditTodoItem,
   setToEditTodoItem
 }) {
+  const [editInputValue, setEditInputValue] = useState('')
+
+  useEffect(() => {
+    if (toEditTodoItem.text) {
+      setEditInputValue(toEditTodoItem.text)
+    }
+  }, [toEditTodoItem])
+
   const onCancel = e => {
     e.preventDefault()
     setIsOpen(false)
@@ -57,8 +66,9 @@ export default function EditToDoModal({
 
         <Form.Control
           type="text"
-          value={toEditTodoItem.text}
+          value={editInputValue}
           onChange={e => {
+            setEditInputValue(e.target.value)
             setToEditTodoItem({ ...toEditTodoItem, text: e.target.value })
           }}
         />
