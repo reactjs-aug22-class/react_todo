@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-import EditTodoModal from './components/EditTodoModal'
+import EditTodoModal from './components/EditToDoModal'
 import Row from 'react-bootstrap/Row'
 import Spinner from 'react-bootstrap/Spinner'
 import TodoForm from './components/TodoForm'
@@ -56,10 +56,7 @@ function App() {
               toEditTodoItem={toEditTodoItem}
               setToEditTodoItem={setToEditTodoItem}
             />
-            <TodoForm
-              setTodoList={setTodoList}
-              setHasError={todoList.setHasError}
-            />
+            <TodoForm setTodoList={setTodoList} />
             {todoList.isLoading ? (
               <Spinner animation="grow" />
             ) : todoList.hasError ? (

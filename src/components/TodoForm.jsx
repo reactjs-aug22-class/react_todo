@@ -3,21 +3,34 @@ import React, { useRef } from 'react'
 import Form from 'react-bootstrap/Form'
 import { v4 as uuidv4 } from 'uuid'
 
-export default function TodoForm({ setTodoList, setHasError }) {
+export default function TodoForm({ setTodoList }) {
   const todoInputRef = useRef()
   const onAddTodo = e => {
     e.preventDefault()
+    if (!todoInputRef.current.value?.trim()) {
+      alert('Please enter the to do text')
+      return
+    }
     const newTodo = {
       id: uuidv4(),
       text: todoInputRef.current.value,
       isComplete: false
     }
-    setTodoList(prev => [...prev, newTodo])
-    setHasError(false)
+    setTodoList(prevState => ({
+      ...prevState,
+      data: [...prevState.data, newTodo]
+    }))
+    setTodoList(prevState => ({
+      ...prevState,
+      hasError: false
+    }))
     todoInputRef.current.value = ''
   }
   const onClearAll = () => {
-    setTodoList([])
+    setTodoList(prevState => ({
+      ...prevState,
+      data: []
+    }))
   }
 
   return (

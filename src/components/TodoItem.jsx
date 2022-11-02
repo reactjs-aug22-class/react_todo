@@ -13,7 +13,10 @@ export default function TodoItem({
 }) {
   const onDelete = () => {
     const newTodoList = todoList.filter(item => item.id !== todoItem.id)
-    setTodoList(newTodoList)
+    setTodoList(prevState => ({
+      ...prevState,
+      data: newTodoList
+    }))
   }
 
   const onCompleteTodo = () => {
@@ -34,7 +37,10 @@ export default function TodoItem({
 
     todoListCopy[targetItemIndex] = targetItemCopy
 
-    setTodoList(todoListCopy)
+    setTodoList(prevState => ({
+      ...prevState,
+      data: todoListCopy
+    }))
   }
 
   const onEdit = () => {

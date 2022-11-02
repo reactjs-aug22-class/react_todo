@@ -1,4 +1,4 @@
-import './EditTodoModal.styles.css'
+import './EditToDoModal.styles.css'
 
 import Form from 'react-bootstrap/Form'
 import React from 'react'
@@ -37,7 +37,10 @@ export default function EditToDoModal({
 
     todoListCopy[targetItemIndex] = targetItemCopy
 
-    setTodoList(todoListCopy)
+    setTodoList(prevState => ({
+      ...prevState,
+      data: todoListCopy
+    }))
     setToEditTodoItem({})
     setIsOpen(false)
   }
