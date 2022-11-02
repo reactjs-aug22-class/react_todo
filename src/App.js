@@ -19,7 +19,6 @@ function App() {
     isLoading: true,
     hasError: false
   })
-  const [toEditTodoItem, setToEditTodoItem] = useState({})
 
   // this code will run once, at the mounting phone
   useEffect(() => {
@@ -59,8 +58,6 @@ function App() {
               <EditTodoModal
                 todoList={todoList.data}
                 setTodoList={setTodoList}
-                toEditTodoItem={toEditTodoItem}
-                setToEditTodoItem={setToEditTodoItem}
               />
               <TodoForm setTodoList={setTodoList} />
               {todoList.isLoading ? (
@@ -70,11 +67,7 @@ function App() {
                   Sorry, the app has error, try again later
                 </p>
               ) : (
-                <TodoList
-                  todoList={todoList.data}
-                  setTodoList={setTodoList}
-                  setToEditTodoItem={setToEditTodoItem}
-                />
+                <TodoList todoList={todoList.data} setTodoList={setTodoList} />
               )}
             </ModalProvider>
           </div>

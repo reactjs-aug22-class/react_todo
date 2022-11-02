@@ -5,14 +5,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import ModalContext from '../modelContext/todoEditModal.context'
 
-export default function EditToDoModal({
-  todoList,
-  setTodoList,
-  toEditTodoItem,
-  setToEditTodoItem
-}) {
+export default function EditToDoModal({ todoList, setTodoList }) {
   const [editInputValue, setEditInputValue] = useState('')
-  const { isOpen, setIsOpen } = useContext(ModalContext)
+  const { isOpen, setIsOpen, toEditTodoItem, setToEditTodoItem } =
+    useContext(ModalContext)
   useEffect(() => {
     if (toEditTodoItem.text) {
       setEditInputValue(toEditTodoItem.text)
