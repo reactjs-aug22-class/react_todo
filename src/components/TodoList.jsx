@@ -2,12 +2,7 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 
-export default function TodoList({
-  todoList,
-  setTodoList,
-  setIsOpen,
-  setToEditTodoItem
-}) {
+export default function TodoList({ todoList, setTodoList, setToEditTodoItem }) {
   return (
     <ul className="list-group">
       {todoList.map((todoItem, index) => (
@@ -16,7 +11,6 @@ export default function TodoList({
             todoItem={todoItem}
             todoList={todoList}
             setTodoList={setTodoList}
-            setIsOpen={setIsOpen}
             setToEditTodoItem={setToEditTodoItem}
           />
         </li>

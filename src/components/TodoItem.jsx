@@ -1,16 +1,17 @@
 import './TodoItem.styles.css'
 
-import Button from 'react-bootstrap/Button'
+import React, { useContext } from 'react'
+
 import Form from 'react-bootstrap/Form'
-import React from 'react'
+import ModalContext from '../modelContext/todoEditModal.context'
 
 export default function TodoItem({
   todoItem,
   todoList,
   setTodoList,
-  setIsOpen,
   setToEditTodoItem
 }) {
+  const { setIsOpen } = useContext(ModalContext)
   const onDelete = () => {
     const newTodoList = todoList.filter(item => item.id !== todoItem.id)
     setTodoList(prevState => ({
