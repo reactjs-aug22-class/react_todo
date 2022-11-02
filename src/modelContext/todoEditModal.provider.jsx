@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import ModalContext from './todoEditModal.context'
 
@@ -11,14 +11,16 @@ function ModalProvider({ children }) {
     hasError: false
   })
 
-  const value = {
-    isOpen,
-    setIsOpen,
-    toEditTodoItem,
-    setToEditTodoItem,
-    todoList,
-    setTodoList
-  }
+  const value = useMemo(() => {
+    return {
+      isOpen,
+      setIsOpen,
+      toEditTodoItem,
+      setToEditTodoItem,
+      todoList,
+      setTodoList
+    }
+  }, [todoList.data.length, isOpen, toEditTodoItem.text])
 
   return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
 }
