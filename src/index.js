@@ -1,7 +1,7 @@
 import './index.css'
 
 import App from './App'
-import ModalProvider from './modelContext/todoEditModal.provider'
+import AppProvider from './appContext/app.provider'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
@@ -9,9 +9,9 @@ import reportWebVitals from './reportWebVitals'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <ModalProvider>
+    <AppProvider>
       <App />
-    </ModalProvider>
+    </AppProvider>
   </React.StrictMode>
 )
 

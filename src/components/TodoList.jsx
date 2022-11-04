@@ -1,10 +1,10 @@
-import ModalContext from '../modelContext/todoEditModal.context'
+import AppContext from '../appContext/app.context'
 import React from 'react'
 import TodoItem from './TodoItem'
 import { useContext } from 'react'
 
 export default function TodoList() {
-  const { todoList } = useContext(ModalContext)
+  const { todoList } = useContext(AppContext)
 
   return (
     <ul className="list-group">

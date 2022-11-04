@@ -2,12 +2,12 @@ import './TodoItem.styles.css'
 
 import React, { useContext } from 'react'
 
+import AppContext from '../appContext/app.context'
 import Form from 'react-bootstrap/Form'
-import ModalContext from '../modelContext/todoEditModal.context'
 
 export default function TodoItem({ todoItem }) {
   const { setIsOpen, setToEditTodoItem, todoList, setTodoList } =
-    useContext(ModalContext)
+    useContext(AppContext)
 
   const onDelete = () => {
     const newTodoList = todoList.data.filter(item => item.id !== todoItem.id)
@@ -36,7 +36,6 @@ export default function TodoItem({ todoItem }) {
     targetItemCopy.isComplete = !targetItemCopy.isComplete
 
     todoListCopy[targetItemIndex] = targetItemCopy
-
     setTodoList(prevState => ({
       ...prevState,
       data: todoListCopy

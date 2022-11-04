@@ -13,6 +13,6 @@ const modalState = {
   setTodoList: () => {}
 }
 
-const ModalContext = createContext(modalState)
+const AppContext = createContext(modalState)
 
-export default ModalContext
+export default AppContext

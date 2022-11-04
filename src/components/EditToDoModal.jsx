@@ -2,8 +2,8 @@ import './EditToDoModal.styles.css'
 
 import React, { useContext, useEffect, useState } from 'react'
 
+import AppContext from '../appContext/app.context'
 import Form from 'react-bootstrap/Form'
-import ModalContext from '../modelContext/todoEditModal.context'
 
 export default function EditToDoModal() {
   const [editInputValue, setEditInputValue] = useState('')
@@ -14,7 +14,7 @@ export default function EditToDoModal() {
     setToEditTodoItem,
     todoList,
     setTodoList
-  } = useContext(ModalContext)
+  } = useContext(AppContext)
 
   useEffect(() => {
     if (toEditTodoItem.text) {

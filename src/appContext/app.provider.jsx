@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react'
 
-import ModalContext from './todoEditModal.context'
+import ModalContext from './app.context'
 
-function ModalProvider({ children }) {
+function AppProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false)
   const [toEditTodoItem, setToEditTodoItem] = useState({})
   const [todoList, setTodoList] = useState({
@@ -20,9 +20,9 @@ function ModalProvider({ children }) {
       todoList,
       setTodoList
     }
-  }, [todoList.data.length, isOpen, toEditTodoItem.text])
+  }, [todoList.data, isOpen, toEditTodoItem.text])
 
   return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
 }
 
-export default ModalProvider
+export default AppProvider
