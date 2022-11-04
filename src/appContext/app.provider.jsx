@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 
-import ModalContext from './app.context'
+import AppContext from './app.context'
 
 function AppProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,7 +22,7 @@ function AppProvider({ children }) {
     }
   }, [todoList.data, isOpen, toEditTodoItem.text])
 
-  return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }
 
 export default AppProvider
